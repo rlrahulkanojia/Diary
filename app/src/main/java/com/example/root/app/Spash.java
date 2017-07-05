@@ -13,7 +13,7 @@ public class Spash extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_spash);//chexck
+        setContentView(R.layout.activity_spash);//chexckhg
         pgBar=(ProgressBar)findViewById(R.id.PBar);
         Thread myThread=new Thread(){
         @Override
