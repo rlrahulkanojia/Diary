@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/liked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:text="Liked Your Diary ?"
+        android:layout_alignParentTop="true"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        android:fontFamily="casual"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/rate"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:fontFamily="@string/font"
+        android:onClick="rate"
+        android:text="Rate It"
+        android:layout_below="@+id/liked"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/query"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@string/font"
+        android:layout_marginTop="55dp"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        android:text="Any Problem..?"
+        android:layout_below="@+id/rate"
+        android:layout_centerHorizontal="true" />
+
+    <ImageButton
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        app:srcCompat="@drawable/ic_email_black_24dp"
+        android:layout_below="@+id/query"
+        android:background="@color/primarywhile"
+        android:layout_alignStart="@+id/rate" />
+</RelativeLayout>

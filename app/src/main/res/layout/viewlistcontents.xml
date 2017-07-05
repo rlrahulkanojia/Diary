@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/view_list_layout">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_top"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/colorPrimaryDark"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark" >
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your Entries"
+            android:layout_gravity="center"
+            android:textColor="#FFFFFF"
+            android:id="@+id/toolbar_title"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+
+
+    </android.support.v7.widget.Toolbar>
+    <ListView
+        android:layout_width="match_parent"
+        android:paddingTop="20dp"
+        android:paddingLeft="15dp"
+        android:divider="@color/colorPrimaryDark"
+        android:layout_height="wrap_content"
+        android:id="@+id/listView"
+        />
+</LinearLayout>

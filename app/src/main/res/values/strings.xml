@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">App</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="font">casual</string>
+    <string name="action_settings">Settings</string>
+    <string name="element_text">Element</string>
+    <string name="grid_layout_manager">Grid Layout Manager</string>
+    <string name="linear_layout_manager">Linear Layout Manager</string>
+    <string name="about">Your Diary</string>
+    <string name="textColor">#000000</string>
+
+
+    <string name="title_activity_login">Sign in</string>
+    <string name="pin_content_desc">PIN input field</string>
+    <string name="pin_label_text">PIN</string>
+
+</resources>
