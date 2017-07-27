@@ -45,10 +45,10 @@ public class Menu_3 extends Fragment implements View.OnClickListener {
             view.setBackgroundResource(R.color.white);
 
 
-        rate = (Button) view.findViewById(R.id.rate);
+   //     rate = (Button) view.findViewById(R.id.rate);
         email = (ImageButton) view.findViewById(R.id.email);
         email.setOnClickListener(this);
-        rate.setOnClickListener(this);
+     //   rate.setOnClickListener(this);
         return view;
     }
 
@@ -85,7 +85,7 @@ public class Menu_3 extends Fragment implements View.OnClickListener {
                 Intent chooser = Intent.createChooser(i, "Launch Email");
                 startActivity(chooser);
                 break;
-            case R.id.rate:
+         /*   case R.id.rate:
 
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 //Try Google play
@@ -99,7 +99,7 @@ public class Menu_3 extends Fragment implements View.OnClickListener {
                     }
                 }
                break;
-
+*/
         }
     }
 }

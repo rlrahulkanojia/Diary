@@ -1,27 +1,25 @@
 package com.example.root.app;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -40,6 +38,11 @@ public class ViewListContents extends AppCompatActivity {
     LinearLayout ll;
     Context context=this;
 
+//
+
+//
+    @TargetApi(Build.VERSION_CODES.M)
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         SharedPreferences preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
@@ -55,6 +58,7 @@ public class ViewListContents extends AppCompatActivity {
             ll.setBackgroundResource(R.color.darkColorPrimaryDark);
             toolbarTop.setBackgroundResource(R.color.darkColorPrimaryDark);
             mTitle.setTextColor(getResources().getColor(R.color.white,null));
+
         }
         else {
             ll.setBackgroundResource(R.color.white);
@@ -64,6 +68,8 @@ public class ViewListContents extends AppCompatActivity {
         }
 
         // 26 june
+        Log.v("Example", "onCreate");
+        getIntent().setAction("Already created");
 
 
 
@@ -71,22 +77,6 @@ public class ViewListContents extends AppCompatActivity {
 
         ListView listView = (ListView) findViewById(R.id.listView);
         myDB = new DatabaseHelper(this);
-       /*
-        ArrayList<String> theList = new ArrayList<>();
-        Cursor data = myDB.getListContents();
-        if(data.getCount() == 0){
-            Toast.makeText(this, "There are no contents in this list!",Toast.LENGTH_SHORT).show();
-        }else{
-            while(data.moveToNext()){
-                theList.add(data.getString(1));
-                ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,theList);
-                listView.setAdapter(listAdapter);
-                // june26
-
-
-                //26 june
-            }
-        }*/
         List<Record> lstRec= new ArrayList<Record>();
 
         lstRec.clear();
@@ -113,13 +103,26 @@ public class ViewListContents extends AppCompatActivity {
         listView.setAdapter(rAdapter);
         rAdapter.notifyDataSetChanged();
 
-
-       // ListAdapterRecord adapter = new ListAdapterRecord(this,R.layout.listvie,lstCar);
-       // ListView listView = (ListView)findViewById(R.id.listView);
-      //  listView.setAdapter(adapter);
-
         registerForContextMenu(listView);
-      //  listView.setOnItemClickListener(onlistclick);
+    }
+
+    @Override
+    protected void onResume() {
+        Log.v("Example", "onResume");
+
+        String action = getIntent().getAction();
+        // Prevent endless loop by adding a unique action, don't restart if action is present
+        if(action == null || !action.equals("Already created")) {
+            Log.v("Example", "Force restart");
+            Intent intent = new Intent(this, ViewListContents.class);
+            startActivity(intent);
+            finish();
+        }
+        // Remove the unique action so the next time onResume is called it will restart
+        else
+            getIntent().setAction(null);
+
+        super.onResume();
     }
 
 
@@ -133,6 +136,7 @@ public class ViewListContents extends AppCompatActivity {
         menu.add(0,v.getId(),0,"View");
         menu.add(0,v.getId(),0,"Edit");
     }
+
 
     @Override
     public boolean onContextItemSelected(final MenuItem item){
@@ -161,13 +165,12 @@ public class ViewListContents extends AppCompatActivity {
             builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-
+ //  do nothing
                 }
             });
 
             AlertDialog dialog = builder.create();
             dialog.show();
-
 
 
 
@@ -181,24 +184,23 @@ public class ViewListContents extends AppCompatActivity {
             Intent intent = new Intent(ViewListContents.this,Text_show.class);
             intent.putExtra("ID_EXTRA",String.valueOf(id));
             startActivity(intent);
-            Toast.makeText(this, "View Pressed", Toast.LENGTH_SHORT).show();
+       ///Toast.makeText(this, "View Pressed", Toast.LENGTH_SHORT).show();
         }
-        else if (item.getTitle()=="Edit")
-            Toast.makeText(this,"Edit Pressed",Toast.LENGTH_SHORT).show();
+
+        else if (item.getTitle()=="Edit") {
+          //  Toast.makeText(this, "Edit Pressed", Toast.LENGTH_SHORT).show();
+            AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+            myIds = myDB.selectAllIds();
+            int id = Integer.parseInt(myIds.get(info.position).get("id"));
+            String a="A";
+            String b="B";
+            String c="C";
+            Intent i=new Intent(getApplicationContext(),Notes2.class);
+            i.putExtra("ID_EXTRA2",String.valueOf(id));
+            startActivity(i);
+            myDB.close();
+        }
         return true;
     }
-
-
-
-   /* private AdapterView.OnItemClickListener onlistclick=new AdapterView.OnItemClickListener(){
-        public void onItemClick(AdapterView<?> parent,View view , int position,long id)
-        {
-            Intent intent = new Intent(ViewListContents.this,Text_show.class);
-            intent.putExtra("ID_EXTRA",String.valueOf(id));
-            startActivity(intent);
-
-    };*/
-
-
 
 }

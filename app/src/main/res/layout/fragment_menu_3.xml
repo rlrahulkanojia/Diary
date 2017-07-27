@@ -6,29 +6,6 @@
 
 
     <TextView
-        android:id="@+id/liked"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
-        android:text="Liked Your Diary ?"
-        android:layout_alignParentTop="true"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-        android:fontFamily="casual"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:id="@+id/rate"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:fontFamily="@string/font"
-        android:onClick="rate"
-        android:text="Rate It"
-        android:layout_below="@+id/liked"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
         android:id="@+id/query"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -36,7 +13,6 @@
         android:layout_marginTop="55dp"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
         android:text="Any Problem..?"
-        android:layout_below="@+id/rate"
         android:layout_centerHorizontal="true" />
 
     <ImageButton
@@ -45,7 +21,8 @@
         android:layout_height="wrap_content"
         style="@style/Base.Widget.AppCompat.Button.Borderless"
         app:srcCompat="@drawable/ic_email_black_24dp"
+        android:background="@color/white"
         android:layout_below="@+id/query"
-        android:background="@color/primarywhile"
-        android:layout_alignStart="@+id/rate" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="42dp" />
 </RelativeLayout>

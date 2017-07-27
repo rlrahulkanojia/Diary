@@ -41,10 +41,10 @@ public class Menu_1 extends Fragment implements View.OnClickListener {
         if(useDarkTheme) {
             getActivity().setTheme(R.style.AppTheme_Dark_NoActionBar);
            // view.setBackgroundResource(R.color.darkColorPrimaryDark);
-            view.setBackgroundResource(R.drawable.logo1);
+            view.setBackgroundResource(R.drawable.wall);
             }
             else {
-            view.setBackgroundResource(R.drawable.long123);
+            view.setBackgroundResource(R.drawable.wall);
             //view.setBackgroundResource(R.color.primarywhile);
         }
 
@@ -76,13 +76,13 @@ public class Menu_1 extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.Add:
-                Toast.makeText(getContext(), "Message", Toast.LENGTH_SHORT).show();
+            //    Toast.makeText(getContext(), "Message", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getActivity(), Notes.class);
                 getActivity().startActivity(intent);
                 break;
             case R.id.List_display:
                 Log.v(TAG, "Chevk");
-                Toast.makeText(getContext(), "Message 2", Toast.LENGTH_SHORT).show();
+             //   Toast.makeText(getContext(), "Message 2", Toast.LENGTH_SHORT).show();
                // Intent intent1= new Intent(getActivity(), ViewListContents.class);
                 //getActivity().startActivity(intent1);
                 Intent view_user = new Intent(getContext(),ViewListContents.class);

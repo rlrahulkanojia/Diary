@@ -101,7 +101,7 @@ public class Notes extends AppCompatActivity {
 
                                     //String TEMP= " CHeck";
                                     AddData(result,DateToStr,temp);
-                                    Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();
+                           //         Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();
                                 finish();
 
                                 }
@@ -153,7 +153,7 @@ public class Notes extends AppCompatActivity {
         //30 june
 
 
-        Toast.makeText(getApplicationContext(),"Discard pressed",Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(getApplicationContext(),"Discard pressed",Toast.LENGTH_SHORT).show();
         //finish();
 
 

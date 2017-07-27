@@ -134,7 +134,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return record_list;
     }
-/*
+
     // Updating single Record
     public int Update_Record(Record Record) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -148,7 +148,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return db.update(TABLE_RECORDS, values, KEY_ID + " = ?",
                 new String[] { String.valueOf(Record.getID()) });
     }
-*/
+
     // Deleting single Record
     public void Delete_Record(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
